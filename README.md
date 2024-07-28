@@ -100,8 +100,8 @@ To get started with the Young People's Network, follow these steps:
 
 1. **Clone the Repository**:
     ```sh
-    git clone https://github.com/yourusername/young-peoples-network.git
-    cd young-peoples-network
+    git clone https://github.com/zerosones-blip/Young-People-s-Network.git
+    cd Young-People-s-Network
     ```
 
 2. **Create a Virtual Environment**:
