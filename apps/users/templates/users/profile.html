@@ -1,0 +1,88 @@
+{% load static %}
+{% extends "base.html" %}
+{% block styles %}
+<style>
+ 
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-header h2 {
+        font-size: 28px;
+        color: #333;
+    }
+
+    .profile-info {
+        margin-bottom: 20px;
+    }
+
+    .profile-info p {
+        margin: 5px 0;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto;
+        display: block;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .cover-image {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .edit-profile-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .edit-profile-link:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="profile-page">
+    <div class="profile-header">
+        <h2>{{ user.username }}'s Profile</h2>
+        {% if user.profile.profile_image %}
+            <img src="{{ user.profile.profile_image.url }}" alt="Profile Image" class="profile-image">
+        {% else %}
+            <img src="{% static 'images/default_profile_image.png' %}" alt="Default Profile Image" class="profile-image">
+        {% endif %}
+    </div>
+    {% if user.profile %}
+        {% if user.profile.cover_image %}
+            <img src="{{ user.profile.cover_image.url }}" alt="Cover Image" class="cover-image">
+        {% endif %}
+        <div class="profile-info">
+            <p>Email: {{ user.email }}</p>
+            <p>Date Joined: {{ user.date_joined }}</p>
+            {% if user.profile.bio %}
+                <p>Bio: {{ user.profile.bio }}</p>
+            {% endif %}
+            {% if user.profile.location %}
+                <p>Location: {{ user.profile.location }}</p>
+            {% endif %}
+            {% if user.profile.birth_date %}
+                <p>Birth Date: {{ user.profile.birth_date }}</p>
+            {% endif %}
+        </div>
+        <a href="{% url 'profiles:profile_edit' %}" class="edit-profile-link">Edit Profile</a>
+    {% else %}
+        <p>This user has not yet created a profile.</p>
+    {% endif %}
+</div>
+{% endblock %}

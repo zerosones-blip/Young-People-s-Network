@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="comment-list">
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in post.comments.all %}
+        <li>{{ comment.author.username }} - {{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

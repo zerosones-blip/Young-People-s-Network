@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="conversation-detail">
+    <h2>Conversation {{ conversation.pk }}</h2>
+    <ul>
+        {% for message in messages %}
+        <li>{{ message.sender.username }} - {{ message.content }} - {{ message.timestamp }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+</div>
+{% endblock %}

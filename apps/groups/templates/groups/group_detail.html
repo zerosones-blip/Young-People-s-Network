@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="group-detail">
+    <h2>{{ group.name }}</h2>
+    <p>{{ group.description }}</p>
+    <ul>
+        <h3>Members</h3>
+        {% for member in group.members.all %}
+        <li>{{ member.username }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'groups:group_update' group_id=group.pk %}">Edit Group</a>
+    <form method="post" action="{% url 'groups:group_delete' group_id=group.pk %}">
+        {% csrf_token %}
+        <button type="submit">Delete Group</button>
+    </form>
+</div>
+{% endblock %}

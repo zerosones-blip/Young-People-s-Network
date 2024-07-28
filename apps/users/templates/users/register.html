@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h2>Sign Up</h2>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="field-pair">
+      <div>
+        {{ form.email }}
+        {{ form.email.errors }}
+      </div>
+      <div>
+        {{ form.username }}
+        {{ form.username.errors }}
+      </div>
+    </div>
+    <div class="field-pair">
+      <div>
+        {{ form.first_name }}
+        {{ form.first_name.errors }}
+      </div>
+      <div>
+        {{ form.last_name }}
+        {{ form.last_name.errors }}
+      </div>
+    </div>
+    <div class="field-pair">
+      <div>
+        <label for="{{ form.password1.id_for_label }}">Password:</label>
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+      </div>
+      <div>
+        <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+      </div>
+    </div>
+    <button type="submit" class="auth-btn">Sign Up</button>
+  </form>
+
+  <p class="login-link">Already have an account? <a href="{% url 'users:login' %}">Login</a></p>
+</div>
+{% endblock %}

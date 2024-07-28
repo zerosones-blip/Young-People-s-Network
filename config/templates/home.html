@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+<div class="container-fluid">
+    <section id="hero-section">
+        <img src="{% static 'images/back.jpeg' %}" alt="Hero Background" id="hero-background">
+        <div class="hero-content">
+            <h1>Welcome to Young People's Network</h1>
+            <p>A place to connect, share, and explore</p>
+            <a href="#features-section" class="btn btn-primary">Explore Now</a>
+        </div>
+    </section>
+
+    <section id="features-section">
+        <div class="row">
+            <div class="col-md-4 feature">
+                <i class="fas fa-users"></i>
+                <h3>User Profiles</h3>
+                <p>Create your unique profile and connect with others</p>
+            </div>
+            <div class="col-md-4 feature">
+                <i class="fas fa-comment"></i>
+                <h3>Real-time Messaging</h3>
+                <p>Chat instantly with your friends and connections</p>
+            </div>
+            <div class="col-md-4 feature">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Events</h3>
+                <p>Discover and attend exciting events in your area</p>
+            </div>
+        </div>
+    </section>
+
+<section id="music-section">
+    <div class="container">
+        <h2>Today's Song</h2>
+        <div class="music-player">
+            <audio controls id="background-music">
+                <source src="{% static 'audio/commas.mp3' %}" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</section>
+
+</div>
+{% endblock %}

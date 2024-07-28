@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="event-detail">
+    <h2>{{ event.title }}</h2>
+    <p>{{ event.description }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>Time:</strong> {{ event.start_time }} to {{ event.end_time }}</p>
+    <p><strong>Group:</strong> {{ event.group.name }}</p>
+    <p><strong>Created by:</strong> {{ event.created_by.username }}</p>
+    <ul>
+        <h3>Attendees</h3>
+        {% for attendee in event.attendees.all %}
+        <li>{{ attendee.username }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'events:event_update' event_id=event.pk %}">Edit Event</a>
+    <form method="post" action="{% url 'events:event_delete' event_id=event.pk %}">
+        {% csrf_token %}
+        <button type="submit">Delete Event</button>
+    </form>
+</div>
+{% endblock %}
