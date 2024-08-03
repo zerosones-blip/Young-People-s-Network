@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="profile-edit">
+    <h2>Edit Profile</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="field-pair">
+        {{ form.as_p }}
+        <button class="btn-primary" id="global-btn" type="submit">Update</button>
+        </div>
+    </form>
+</div>
+<hr>
+{% endblock %}

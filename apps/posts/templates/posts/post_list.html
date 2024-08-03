@@ -1,11 +1,38 @@
 {% extends "base.html" %}
+
+{% load static %}
 {% block content %}
-<div class="post-list">
-    <h2>Posts</h2>
-    <ul>
+<div class="wrapper">
+    <div class="top">
+        <div class="title">
+            <h1>Posts</h1>
+            <button class="create-btn">
+                <a href="{% url 'posts:post_create' %}">Create</a>
+            </button>
+        </div>
+    </div>
+    <div class="content">
         {% for post in posts %}
-        <li><a href="{% url 'posts:post_detail' pk=post.pk %}">{{ post.content }}</a></li>
+        <div class="card">
+            <a href="{% url 'profile:profile_detail' user.id %}">
+                {% if user.profile.profile_image %}
+                <img src="{{ user.profile.profile_image.url }}" alt="Profile Image" class="profile-img-post">
+                {% else %}
+                <img src="{% static 'images/default_profile_image.png' %}" alt="Default Profile Image" class="profile-img-post">
+                {% endif %}  
+                <h1><b>{{ post.author.username}}</b></h1>
+                </a>
+            <a href="{% url 'posts:post_detail' pk=post.pk %}">
+                <h2>{{ post.title }}</h2>
+            </a>
+            <h3>{{ post.subtitle }}</h3>
+            <a href="{% url 'posts:post_detail' pk=post.pk %}">Read</a>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 {% endblock %}
+
+
+
+

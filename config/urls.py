@@ -2,19 +2,20 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import HomePageView
+from .views import HomePageView, logout_view
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('users/', include('apps.users.urls')),
-    path('profiles/', include('apps.profiles.urls')),
+    path('profile/', include('apps.profile.urls')),
     path('posts/', include('apps.posts.urls')),
     path('messaging/', include('apps.messaging.urls')),
     path('notifications/', include('apps.notifications.urls')),
     path('events/', include('apps.events.urls')),
     path('groups/', include('apps.groups.urls')),
     path('accounts/', include('django.contrib.auth.urls')), 
+    path('logout/', logout_view, name='logout'),
 ]
 
 if settings.DEBUG:

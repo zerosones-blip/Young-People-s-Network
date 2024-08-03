@@ -22,7 +22,7 @@ header {
 
 #main-content {
     padding: 0;
-    margin: 0px;
+    margin-left: 20px;
     border-radius: 0;
     margin-top: 65px;
 }
@@ -494,7 +494,8 @@ header {
 
 .field-pair input[type="text"],
 .field-pair input[type="email"],
-.field-pair input[type="password"] {
+.field-pair input[type="password"],
+.field-pair textarea {
     width: 380px;
     padding: 10px;
     font-size: 16px;
@@ -530,7 +531,7 @@ header {
     font-size: 2rem;
 }
 
-#edit-profile-btn {
+#global-btn {
     position: absolute;
     right: 10px;
     top: 540px;
@@ -550,4 +551,257 @@ header {
     border-radius: 8px;
     width: 100%;
     height: 450px;
+}
+
+.btns {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+#profile-view {
+    position: absolute;
+    right: 180px;
+    top: 540px;
+}
+
+/* .profile-view:hover {
+    color: #e0d3d3;
+} */
+
+.logout-btn {
+    border-radius: 5px;
+    background: none;
+    position: absolute;
+    right: 50px;
+    top: 18px;
+    
+}
+
+.logout-btn a {
+    text-decoration: none;
+    color: #a07272;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.logout-btn a:hover {
+    color: #e0d3d3;
+} 
+
+
+
+.wrapper {
+    position: relative;
+    clear: both;
+    margin: 0 auto 75px auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.top {
+    background: #4e89ae;
+    height: 180px;
+    border-top: 20px solid #43658b;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.top .title {
+    width: 700px;
+    margin: 38px auto 0 auto;
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.title a {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    text-decoration: none;
+    color: inherit; /* Ensure the text color is inherited */
+}
+
+.profile-img-post {
+    width: 80px; /* Adjust size as needed */
+    height: 80px; /* Adjust size as needed */
+    border-radius: 50%; /* Make the image circular */
+    margin-right: 15px; /* Space between image and text */
+    float: left; /* Float the image to the left */
+}
+
+.title h1 {
+    font-size: 34px;
+    color: #2d2772;
+    font-weight: 500;
+    margin: 0; /* Reset margin to avoid extra space */
+}
+
+.content {
+    padding: 20px; /* Add some padding around the content */
+}
+
+.post-card {
+    background: #f4f4f4;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Clear floats inside the card */
+}
+
+.post-card h2 {
+    font-size: 24px;
+    color: #2d2772;
+    margin-bottom: 15px;
+}
+
+.post-card img {
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.post-card p {
+    font-size: 16px;
+    color: #333;
+}
+
+
+.create-btn {
+    position: relative;
+    background-color: #1f0264cc;
+    border-radius: 10px;
+    text-decoration: none;
+    width: 80px;
+    height: 30px;
+    left: 600px;
+    bottom: 40px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}    
+
+.create-btn a {
+    color: #c9d4d1;
+    text-decoration: none;
+
+}
+
+.content{
+    margin: -80px auto 100px;
+    padding-bottom: 20px;
+}
+
+.card{
+    position: relative;
+    background: #c6b9b9;
+    border-radius: 5px;
+    padding:50px;
+    height: min-content;
+    width: 800px;
+    margin: 20px auto 0 auto;
+    box-shadow: 0 2px 4px rgba(100,100,100,.1);
+}
+
+.post-card{
+    position: relative;
+    background: #c6b9b9;
+    border-radius: 5px;
+    padding:50px;
+    height: 400px;
+    width: 800px;
+    margin: 20px auto 0 auto;
+    box-shadow: 0 2px 4px rgba(100,100,100,.1);
+}
+
+.post-card p {
+    position: relative;
+    left: 30px;
+}
+
+.post-card img {
+    top: 0;
+    width: 350px;
+    height: 350px;
+    float: left;
+    border-radius: 5px;
+}
+
+.card h2 {
+    font-size:21px;
+    font-weight:500;
+}
+
+.card h2 a {
+    color:#CC0000;
+    text-decoration:none;
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.edit-pair textarea {
+    width: 380px;
+    padding: 10px;
+    font-size: 16px;
+    background: #c9d4d1;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.edit-pair input {
+    position: relative;
+    width: 380px;
+    padding: 10px;
+    font-size: 16px;
+    background: #c9d4d1;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.profile-img-post {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    float: left;
+    top: 0;
+    position: relative;
+}
+
+
+.skill-item,
+.experience-item,
+.education-item {
+    margin-bottom: 15px;
+}
+
+.skill-item p,
+.experience-item p,
+.education-item p {
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.skill-item strong,
+.experience-item strong,
+.education-item strong {
+    font-weight: bold;
+}
+
+.social-link-item {
+    margin-bottom: 10px;
+}
+
+.social-link-item p {
+    font-size: 16px;
+}
+
+.social-link-item a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-link-item a:hover {
+    color: #0056b3;
 }

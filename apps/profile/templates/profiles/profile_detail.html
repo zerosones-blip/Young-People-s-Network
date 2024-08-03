@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="profile-detail">
+    {% if user.profile.cover_image %}
+        <img src="{{ user.profile.cover_image.url }}" alt="Cover Image" class="cover-img">
+    {% endif %}
+    {% if user.profile.profile_image %}
+        <img src="{{ user.profile.profile_image.url }}" alt="Profile Image" class="profile-img">
+    {% else %}
+        <img src="{% static 'images/default_profile_image.png' %}" alt="Default Profile Image" class="profile-img">
+    {% endif %}
+    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+    {% if user.profile.bio %}
+        <p>{{ user.profile.bio }}</p>
+    {% endif %}
+    <div class="btns">
+        {% if user.is_authenticated %}
+            <a class="btn-primary" id="profile-view" href="{% url 'profile:profile_views' %}">Profile Views</a>
+        {% endif %}
+        <a href="{% url 'profile:profile_edit' %}" class="btn-primary" id="global-btn">Edit Profile</a>
+    </div>
+</div>
+
+<div class="profile-info">
+    <p><strong>Location:</strong> {{ user.profile.location }}</p>
+    <p><strong>Birth Date:</strong> {{ user.profile.birth_date }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Date Joined:</strong> {{ user.date_joined }}</p>
+</div>
+
+<hr>
+
+<!-- Skills -->
+<div class="profile-section">
+    <h3>Skills</h3>
+    {% for skill in user.profile.skills.all %}
+        <div class="skill-item">
+            <p><strong>{{ skill.name }}</strong></p>
+            <p>Proficiency: {{ skill.proficiency }}/10</p>
+        </div>
+    {% empty %}
+        <p>No skills added yet.</p>
+    {% endfor %}
+</div>
+
+<!-- Experiences -->
+<div class="profile-section">
+    <h3>Work Experience</h3>
+    {% for experience in user.profile.experiences.all %}
+        <div class="experience-item">
+            <p><strong>{{ experience.title }}</strong> at {{ experience.company }}</p>
+            <p>{{ experience.location }}</p>
+            <p>{{ experience.start_date }} - {% if experience.end_date %}{{ experience.end_date }}{% else %}Present{% endif %}</p>
+            {% if experience.description %}
+                <p>{{ experience.description }}</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No work experience added yet.</p>
+    {% endfor %}
+</div>
+
+<!-- Education -->
+<div class="profile-section">
+    <h3>Education</h3>
+    {% for education in user.profile.educations.all %}
+        <div class="education-item">
+            <p><strong>{{ education.degree }}</strong> in {{ education.field_of_study }}</p>
+            <p>{{ education.institution }}</p>
+            <p>{{ education.start_date }} - {% if education.end_date %}{{ education.end_date }}{% else %}Present{% endif %}</p>
+            {% if education.description %}
+                <p>{{ education.description }}</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No education added yet.</p>
+    {% endfor %}
+</div>
+
+<!-- Social Links -->
+<div class="profile-section">
+    <h3>Social Links</h3>
+    {% for link in user.profile.social_links.all %}
+        <div class="social-link-item">
+            <p><strong>{{ link.platform }}</strong>: <a href="{{ link.link }}" target="_blank">{{ link.link }}</a></p>
+        </div>
+    {% empty %}
+        <p>No social links added yet.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

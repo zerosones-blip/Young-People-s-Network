@@ -8,7 +8,7 @@
             {% if notification.read %}
             <strong>{{ notification.message }}</strong>
             {% else %}
-            {{ notification.message }}
+            {{ notification.content }}
             {% endif %}
             - {{ notification.timestamp }}
         </li>
